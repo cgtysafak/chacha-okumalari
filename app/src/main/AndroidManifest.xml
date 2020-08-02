@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cgty.okumalarimuser">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LectureDetailsActivity"></activity>
+        <activity android:name=".VideoActivity"></activity>
+        <activity android:name=".LectureDetailsActivity" />
         <activity android:name=".LecturesActivity" />
         <activity android:name=".SectionsActivity" />
         <activity android:name=".MainActivity">

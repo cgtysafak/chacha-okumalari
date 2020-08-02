@@ -7,4 +7,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Collapsed App Bar theme. -->
+    <style name="CollapsedAppbar" parent="@android:style/TextAppearance.Material.Medium">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Expanded App Bar theme. -->
+    <style name="ExpandedAppbar" parent="@android:style/TextAppearance.Material.Title">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

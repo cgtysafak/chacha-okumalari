@@ -15,9 +15,6 @@ public class LectureViewHolder extends RecyclerView.ViewHolder
 		implements View.OnClickListener, View.OnCreateContextMenuListener
 {
 	public TextView txtLectureName;
-	public TextView txtLectureMalz;
-	public TextView txtLectureNotes;
-	public TextView txtLectureLinkToWatch;
 	public ImageView imageView;
 	
 	private ItemClickListener itemClickListener;

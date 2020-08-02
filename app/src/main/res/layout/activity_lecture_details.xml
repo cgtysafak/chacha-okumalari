@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="220dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll||exitUntilCollapsed"
+            app:layout_scrollFlags="scroll"
             app:contentScrim="#0e0d0e"
             app:expandedTitleTextAppearance="@android:color/transparent">
 
@@ -107,7 +107,7 @@
                     android:layout_marginTop="3dp"
                     android:padding="5dp"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:text="Lecture Notes"
                     android:inputType="textMultiLine"
                     android:textStyle="bold"
@@ -128,6 +128,12 @@
                 app:shadowEnabled="true"
                 app:shadowHeight="5dp"
                 app:cornerRadius="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txt_video_id"
+                android:text="Video ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

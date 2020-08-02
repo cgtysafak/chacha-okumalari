@@ -111,12 +111,12 @@ public class LecturesActivity extends AppCompatActivity
                         //Her bir satira tiklandiginda ne yapsin...
 //						Toast.makeText(MainActivity.this, "Category ID: " + adapter.getRef(position).getKey() +
 //						" Category Name: " + clickedOne.getName(), Toast.LENGTH_SHORT).show();
-						/*Intent sections;
-						sections = new Intent( LecturesActivity.this, LecturesActivity.class);
+						Intent lecture;
+                        lecture = new Intent( LecturesActivity.this, LectureDetailsActivity.class);
+    
+                        lecture.putExtra("LectureId", adapter.getRef(position).getKey());
 						
-						sections.putExtra("SectionId", adapter.getRef(position).getKey());
-						
-						startActivity(sections);*/
+						startActivity(lecture);
                     }
                 });
             }

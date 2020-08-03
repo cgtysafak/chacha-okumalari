@@ -2,11 +2,15 @@ package com.cgty.okumalarimuser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +20,19 @@ import com.cgty.okumalarimuser.model.Category;
 import com.cgty.okumalarimuser.viewholder.CategoryViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Main Activity class.
@@ -34,12 +46,16 @@ public class MainActivity extends AppCompatActivity
 	DatabaseReference categoryPath;
 	FirebaseStorage storage;
 	StorageReference imagePath;
-	FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter;
+	FirebaseRecyclerAdapter<Category,CategoryViewHolder> adapter;
 	// RecyclerView...
 	RecyclerView recycler_category;
 	RecyclerView.LayoutManager layoutManager;
 	// Model...
 	Category newCategory;
+	// Searching...
+	FirebaseRecyclerAdapter<Category,CategoryViewHolder> searchAdapter;
+	List<String> suggestionList;
+	MaterialSearchBar materialSearchBar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -56,10 +72,156 @@ public class MainActivity extends AppCompatActivity
 		// Initializing Recycler variables...
 		recycler_category = findViewById(R.id.recycler_category);
 		recycler_category.setHasFixedSize(true);
-		layoutManager = new LinearLayoutManager(this);
+		layoutManager = new GridLayoutManager(this,2);
 		recycler_category.setLayoutManager(layoutManager);
 		
 		uploadCategory();
+		
+		suggestionList = new ArrayList<>();  //it also can be written in a single line.
+		
+		// Initializing Search variables...
+		materialSearchBar = findViewById(R.id.searchBar);
+		materialSearchBar.setHint("Search Categories....");
+		
+		showSuggestions();
+		
+		materialSearchBar.setCardViewElevation(10);
+		materialSearchBar.addTextChangeListener(new TextWatcher()
+		{
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after)
+			{
+			
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count)
+			{
+				// Displaying the suggestion list when user types.
+				List<String> suggestion;
+				suggestion = new ArrayList<String>();
+				
+				for (String search:suggestionList)  //loop at suggestion list.
+				{
+					if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
+					{
+						suggestion.add(search);
+					}
+				}
+				
+				materialSearchBar.setLastSuggestions(suggestion);
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s)
+			{
+			
+			}
+		});
+		
+		materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener()
+		{
+			@Override
+			public void onSearchStateChanged(boolean enabled)
+			{
+				//Loading the original adapter when the search bar deactivated.
+				if (!enabled)
+				{
+					recycler_category.setAdapter(adapter);
+				}
+			}
+			
+			@Override
+			public void onSearchConfirmed(CharSequence text)
+			{
+				//Showing the search adapter when the searching process is done.
+				startSearching(text);
+			}
+			
+			@Override
+			public void onButtonClicked(int buttonCode)
+			{
+			
+			}
+		});
+	}
+	
+	private void startSearching(CharSequence text)
+	{
+		//Starting the filtering.
+		Query searchQueryByName;
+		searchQueryByName = categoryPath.orderByChild("name").equalTo(text.toString());
+		
+		//Creating options by the query.
+		FirebaseRecyclerOptions<Category> categoryOptions;
+		categoryOptions = new FirebaseRecyclerOptions.Builder<Category>().setQuery(searchQueryByName, Category.class).build();
+		
+		searchAdapter = new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(categoryOptions)
+		{
+			@Override
+			protected void onBindViewHolder(@NonNull CategoryViewHolder categoryViewHolder, int i, @NonNull Category category)
+			{
+				categoryViewHolder.txtCategoryName.setText(category.getName());
+				Picasso.with(getBaseContext()).load(category.getImage()).into(categoryViewHolder.imageView);
+				
+				Category local = category;
+				
+				categoryViewHolder.setItemClickListener(new ItemClickListener()
+				{
+					@Override
+					public void onClick(View view, int position, boolean isLongClick)
+					{
+						//Her bir satira tiklandiginda ne yapsin...
+//						Toast.makeText(MainActivity.this, "Category ID: " + adapter.getRef(position).getKey() + " Category Name: " + tiklandiginda.getName(), Toast.LENGTH_SHORT).show();
+						Intent sections;
+						sections = new Intent( MainActivity.this, SectionsActivity.class);
+						
+						sections.putExtra("CategoryId", searchAdapter.getRef(position).getKey());
+						
+						startActivity(sections);
+					}
+				});
+			}
+			
+			@NonNull
+			@Override
+			public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+			{
+				View itemView;
+				itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_line_element, parent,false);
+				
+				return new CategoryViewHolder(itemView);
+			}
+		};
+		
+		searchAdapter.startListening();
+		recycler_category.setAdapter(searchAdapter);  //Transferring the results to the recycler.
+	}
+	
+	private void showSuggestions()
+	{
+		categoryPath.orderByChild("name").addValueEventListener(new ValueEventListener()
+		{
+			@Override
+			public void onDataChange(@NonNull DataSnapshot snapshot)
+			{
+				for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+					Category item;
+					item = postSnapshot.getValue(Category.class);
+					
+					//assert item != null;
+					suggestionList.add(item.getName()); //Adding the names of desired categories.
+				}
+				
+				materialSearchBar.setLastSuggestions(suggestionList);
+			}
+			
+			@Override
+			public void onCancelled(@NonNull DatabaseError error)
+			{
+			
+			}
+		});
 	}
 	
 	private void uploadCategory()

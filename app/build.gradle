@@ -15,6 +15,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // ADDED FOR SAMSUNG GALAXY NOTE 4, MIGHT BE DELETED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -39,20 +45,19 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.firebaseui:firebase-ui-database:4.2.1'
-    //Firebase resim kütüphanesi
+    //Firebase image library
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    //Tasarım kütüphaneleri
+    //Design libraries
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     implementation 'com.github.jd-alexander:android-flat-button:v1.1'
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
-    implementation files('libs\\YouTubeAndroidPlayerApi.jar')  // libs/YouTubeAnd...
-    //Arama kütüphanesi
-    //implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
-
-    //Reklam
+    //YouTube Player API
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')  // libs\\YouTubeAnd...
+    //Search library
+    implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
+    //Ads
     //implementation 'com.google.android.gms:play-services-ads:17.0.0'
-
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

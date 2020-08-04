@@ -50,7 +50,7 @@ public class SectionsActivity extends AppCompatActivity
 	String categoryId = "";
 	// Searching...
 	FirebaseRecyclerAdapter<Sections, SectionsViewHolder> searchAdapter;
-	List<String> suggestionList;
+	List<String> suggestionList = new ArrayList<>();
 	MaterialSearchBar materialSearchBar;
 	
 	@Override
@@ -203,7 +203,7 @@ public class SectionsActivity extends AppCompatActivity
 	
 	private void showSuggestions()
 	{
-		sectionPath.orderByChild("categoryid").equalTo(categoryId).addValueEventListener(new ValueEventListener()
+		sectionPath.orderByChild("name").equalTo(categoryId).addValueEventListener(new ValueEventListener()  //.equalTo(categoryId).addValue...
 		{
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot)

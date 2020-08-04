@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.github.jd-alexander:android-flat-button:v1.1'
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
     //YouTube Player API
-    implementation files('libs/YouTubeAndroidPlayerApi.jar')  // libs\\YouTubeAnd...
+    implementation files('libs\\YouTubeAndroidPlayerApi.jar')  // libs/YouTubeAnd...
     //Search library
     implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
     //Ads

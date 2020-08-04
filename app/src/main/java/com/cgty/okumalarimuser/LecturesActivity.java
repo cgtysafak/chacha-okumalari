@@ -56,7 +56,7 @@ public class LecturesActivity extends AppCompatActivity
     String sectionId = "";
     // Searching...
     FirebaseRecyclerAdapter<Lecture, LectureViewHolder> searchAdapter;
-    List<String> suggestionList;
+    List<String> suggestionList = new ArrayList<>();;
     MaterialSearchBar materialSearchBar;
     
     @Override

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 	Category newCategory;
 	// Searching...
 	FirebaseRecyclerAdapter<Category,CategoryViewHolder> searchAdapter;
-	List<String> suggestionList;
+	List<String> suggestionList = new ArrayList<>();
 	MaterialSearchBar materialSearchBar;
 	
 	@Override
@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity
 		recycler_category.setLayoutManager(layoutManager);
 		
 		uploadCategory();
-		
-		suggestionList = new ArrayList<>();  //it also can be written in a single line.
 		
 		// Initializing Search variables...
 		materialSearchBar = findViewById(R.id.searchBar);

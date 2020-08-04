@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".SplashScreen">
+
+    <TextView
+        android:id="@+id/textViewWelcomeSplashScreen"
+        android:layout_marginTop="180dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:text="Okuma Bloguma Hosgeldin"/>
+
+    <TextView
+        android:id="@+id/textViewParagraphSplashScreen"
+        android:layout_below="@+id/textViewWelcomeSplashScreen"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:text="(Ana sayfaya yonlendiriliyorsunuz.)"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_below="@+id/textViewParagraphSplashScreen"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="~Cagatay Safak"
+        android:textSize="16sp"/>
+
+</LinearLayout>

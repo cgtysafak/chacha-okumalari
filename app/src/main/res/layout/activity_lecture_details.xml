@@ -37,6 +37,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="parallax"
+                app:titleTextColor="@color/colorAccent"
                 app:title="Lecture Name">
 
 
@@ -90,7 +91,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:text="Lecture Malz"
-                    android:textStyle="bold"
+                    android:textStyle="bold|italic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -109,8 +110,6 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:text="Lecture Notes"
-                    android:inputType="textMultiLine"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -123,7 +122,7 @@
                 android:layout_margin="8dp"
                 android:textColor="#FFFFFF"
                 app:fButtonColor="@color/colorPrimary"
-                android:text="Go to Link."
+                android:text="Go to video."
                 android:shadowColor="#000000"
                 app:shadowEnabled="true"
                 app:shadowHeight="5dp"

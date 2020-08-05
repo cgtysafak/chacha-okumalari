@@ -26,10 +26,10 @@
             android:textSize="22sp"
             android:textStyle="bold|italic"
             android:textColor="#FFFFFF"
-            android:background="#A90000E6"
+            android:background="@color/colorPrimaryTransparent"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 

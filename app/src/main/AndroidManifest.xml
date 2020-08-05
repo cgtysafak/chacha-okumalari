@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdvActivity"></activity>
+        <activity android:name=".CreditsActivity"></activity>
+        <activity android:name=".AdvActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>  <!-- uygulama kimligi -->
-
+            android:value="ca-app-pub-3940256099942544~3347511713" /> <!-- uygulama kimligi -->
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

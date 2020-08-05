@@ -14,6 +14,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.cgty.okumalarimuser.interfaces.ItemClickListener;
 import com.cgty.okumalarimuser.model.Category;
@@ -41,6 +43,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity
 {
+	ImageButton buttonHelp;
 	// Firebase...
 	FirebaseDatabase database;
 	DatabaseReference categoryPath;
@@ -62,6 +65,8 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		buttonHelp = findViewById(R.id.buttonHelp);
 		
 		// Initializing Firebase variables...
 		database = FirebaseDatabase.getInstance();
@@ -140,6 +145,19 @@ public class MainActivity extends AppCompatActivity
 			public void onButtonClicked(int buttonCode)
 			{
 			
+			}
+		});
+		
+		buttonHelp.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent credits;
+				
+				credits = new Intent( MainActivity.this, CreditsActivity.class);
+				
+				startActivity(credits);
 			}
 		});
 	}

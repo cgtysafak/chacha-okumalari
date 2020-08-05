@@ -6,17 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/books"
+    android:background="@drawable/books_transparent"
     tools:context=".MainActivity">
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        android:id="@+id/searchBar"
-        app:mt_speechMode="false"
-        app:mt_hint="Search..."
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    </com.mancj.materialsearchbar.MaterialSearchBar>
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar"
+            app:mt_speechMode="false"
+            app:mt_hint="Search..."
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+        </com.mancj.materialsearchbar.MaterialSearchBar>
+
+        <ImageButton
+            android:id="@+id/buttonHelp"
+            android:src="@drawable/ic_help_green"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_category"

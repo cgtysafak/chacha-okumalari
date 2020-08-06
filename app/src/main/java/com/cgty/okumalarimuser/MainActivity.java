@@ -11,11 +11,13 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.cgty.okumalarimuser.interfaces.ItemClickListener;
 import com.cgty.okumalarimuser.model.Category;
@@ -43,6 +45,8 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity
 {
+	private long backPressedTime;
+	private Toast backToast;
 	ImageButton buttonHelp;
 	// Firebase...
 	FirebaseDatabase database;
@@ -162,7 +166,38 @@ public class MainActivity extends AppCompatActivity
 		});
 	}
 	
-	private void startSearching(CharSequence text)
+	@Override
+	public void onBackPressed()
+	{
+		if (backPressedTime + 2000 > System.currentTimeMillis())
+		{
+			backToast.cancel();
+			super.onBackPressed();
+			
+			return;
+		}
+		else
+		{
+			backToast = Toast.makeText(getBaseContext(), "Press back again to exit.", Toast.LENGTH_SHORT);
+			backToast.show();
+		}
+		
+		backPressedTime = System.currentTimeMillis();
+	}
+	
+	//deneme
+	/*@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+		{
+		
+		}
+		
+		return super.onKeyDown(keyCode, event);
+	}*/
+	
+	private void startSearching( CharSequence text)
 	{
 		//Starting the filtering.
 		Query searchQueryByName;

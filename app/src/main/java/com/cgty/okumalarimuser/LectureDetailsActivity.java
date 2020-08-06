@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cgty.okumalarimuser.model.Lecture;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +24,10 @@ import info.hoang8f.widget.FButton;
 
 public class LectureDetailsActivity extends AppCompatActivity
 {
+	private static final String TAG = "MainActivity";
+	//Ads...
+	private AdView mAdView;
+	//Content
 	TextView lecture_name;
 	TextView lecture_malz;
 	TextView lecture_notes;
@@ -40,7 +46,12 @@ public class LectureDetailsActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lecture_details);
-	
+		
+		//Ads...
+		mAdView = findViewById(R.id.adView_lecture_details);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
+		
 		//Controls
 		lecture_name = findViewById(R.id.txt_lecture_name);
 		lecture_malz = findViewById(R.id.txt_malz);

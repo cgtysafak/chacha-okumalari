@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -12,6 +14,10 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener
 {
+    private static final String TAG = "VideoActivity";
+    //Ads...
+    private AdView mAdView;
+    //YouTube...
     YouTubePlayerView youTubePlayerView;
     public static String API_KEY = "AIzaSyAEDuOqYVoV7ezAKUkBPd4Js0vKBglIri0";
     String VIDEO_ID = "";
@@ -21,6 +27,11 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+        
+        //Ads...
+        mAdView = findViewById(R.id.adView_video);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     
         youTubePlayerView = findViewById(R.id.player);
         youTubePlayerView.initialize(API_KEY,this);

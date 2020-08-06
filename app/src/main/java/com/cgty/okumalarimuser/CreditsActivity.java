@@ -8,19 +8,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class CreditsActivity extends AppCompatActivity
 {
+    private static final String TAG = "CreditsActivity";
+    //Layouts
     LinearLayout githubLayout;
     LinearLayout youTubeLayout;
     LinearLayout instagramLayout;
     LinearLayout twitterLayout;
     LinearLayout discordLayout;
+    //Ads...
+    private AdView mAdView;
+    
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
+    
+        //Ads...
+        mAdView = findViewById(R.id.adView_credits);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         
         githubLayout = findViewById(R.id.githubLayout);
         youTubeLayout = findViewById(R.id.youTubeLayout);

@@ -1,149 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".CreditsActivity">
 
-    <TextView
-        android:id="@+id/textViewTitleCredits"
-        android:layout_marginTop="80dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:text="@string/credits_title"/>
-
-    <TextView
-        android:id="@+id/textViewParagraphCredits"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:textAlignment="center"
-        android:text="@string/credits"
-        android:textSize="12sp"/>
-
-    <Button
-        android:id="@+id/btn_credits"
-        android:layout_margin="20dp"
-        android:textSize="20sp"
-        android:text="@string/button_credits"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:id="@+id/githubLayout"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/github_logo"/>
+        <TextView
+            android:id="@+id/textViewTitleCredits"
+            android:layout_marginTop="80dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:text="@string/credits_title"/>
 
         <TextView
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:id="@+id/textViewParagraphCredits"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:text="@string/credits"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btn_credits"
+            android:layout_margin="20dp"
             android:textSize="20sp"
-            android:text="cgtysafak"/>
+            android:text="@string/button_credits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/githubLayout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/github_logo"/>
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:text="cgtysafak"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/youTubeLayout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/youtube_logo"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:text="Cagatay Safak"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/instagramLayout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/instagram_logo"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:text="cgtysafak"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/twitterLayout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/twitter_logo"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:text="cgtysafak"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/discordLayout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/discord_logo"/>
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:text="caca#1613"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/youTubeLayout"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_credits"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/youtube_logo"/>
-
-        <TextView
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textSize="20sp"
-            android:text="Cagatay Safak"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/instagramLayout"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/instagram_logo"/>
-
-        <TextView
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textSize="20sp"
-            android:text="cgtysafak"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/twitterLayout"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/twitter_logo"/>
-
-        <TextView
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textSize="20sp"
-            android:text="cgtysafak"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/discordLayout"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/discord_logo"/>
-
-        <TextView
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textSize="20sp"
-            android:text="caca#1613"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
